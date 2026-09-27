@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+@layer base {
+  :root {
+    /* Updated Palette */
+    --bg-main: #F2F0E6; /* Alabaster */
+    --bg-surface: #FFFFFF; /* Pure White */
+    --bg-elevated: #EBEBE6; /* Muted Stone */
+    
+    --text-primary: #1C1D1F; /* Deep Charcoal */
+    --text-secondary: #5A6268; /* Slate Gray */
+    --text-muted: #A1A3A8; /* Ash */
+    
+    --primary: #354E6B; /* Oxford Blue */
+    --primary-hover: #26384C;
+    
+    --accent-success: #92A390; /* Muted Sage */
+    --accent-warning: #D88E75; /* Soft Terracotta */
+    --accent-info: #354E6B;
+    
+    --border-light: #E2E2DF;
+    --border-subtle: #ECECE9;
+    
+    --shadow-subtle: 0 4px 12px rgba(26, 28, 30, 0.04);
+    --shadow-hover: 0 8px 24px rgba(26, 28, 30, 0.08);
+    --shadow-modal: 0 20px 40px rgba(26, 28, 30, 0.16);
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+  }
+
+  html, body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* Adapted from Adaptive Academy clone */
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-subtle);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn, .btn-primary, .btn-secondary, .btn-ghost, .btn-danger {
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .btn:disabled, .btn-primary:disabled, .btn-secondary:disabled, .btn-ghost:disabled, .btn-danger:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--bg-elevated);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: var(--bg-elevated);
+    color: var(--primary);
+  }
+
+  .btn-danger {
+    background-color: rgba(192, 108, 91, 0.1);
+    color: var(--accent-warning);
+    border: 1px solid rgba(192, 108, 91, 0.2);
+  }
+  .btn-danger:hover:not(:disabled) {
+    background-color: var(--accent-warning);
+    color: white;
+  }
+
+  .field {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--bg-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(43, 58, 74, 0.08);
+  }
+
+  .label {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .badge {
+    background-color: var(--bg-elevated);
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 1.25rem;
+  }
+
+  .muted {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .link {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+  }
+  .link:hover {
+    color: var(--primary-hover);
+  }
+}
