@@ -45,7 +45,7 @@ class Settings(BaseSettings):
     # list-typed field *before* field validators run, so a comma-separated value
     # like "http://localhost:5173,http://127.0.0.1:5173" in .env would fail to
     # parse and crash startup. Parsing it ourselves keeps .env human-writable.
-    cors_origins: str = "http://localhost:5173"
+    cors_origins: str = "http://localhost:5173,https://study-support-git-main-karpo-10.vercel.app,https://study-support-karthikgpillai1-sources-projects.vercel.app"
 
     max_upload_mb: int = 25
     storage_dir: Path = BACKEND_DIR / "storage"
@@ -84,7 +84,7 @@ class Settings(BaseSettings):
     def cors_origin_list(self) -> list[str]:
         """Comma-separated origins from config, always at least one entry."""
         origins = [item.strip() for item in self.cors_origins.split(",") if item.strip()]
-        return origins or ["http://localhost:5173"]
+        return origins or ["http://localhost:5173", "https://study-support-git-main-karpo-10.vercel.app", "https://study-support-karthikgpillai1-sources-projects.vercel.app"]
 
     @property
     def llm_enabled(self) -> bool:
